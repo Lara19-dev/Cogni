@@ -31,6 +31,28 @@ client.on('guildMemberAdd', async member => {
 //   member.guild.channels.get('611453942819192854').send('**' + member.user.username + '**, has left the server. We\'re sorry to see you go.. \n https://media1.tenor.com/images/7ef999b077acd6ebef92afc34690097e/tenor.gif?itemid=10893043');
 // });
 
+var choices = ["!c news","!c cnn","!c space"];
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function getRandom(array){
+  let index = getRandomInt(3);
+  return array[index];
+}
+
+
+
+client.on('message', async message => {
+  if(message.content == "!c begun"){
+    setInterval(()=>{
+      let finalchoice = getRandom(choices);;
+      client.channels.get('616788311347953665').send(finalchoice);
+    }, 720000)
+}}
+);
+
 
 // Runs event-driven functions
 fs.readdir('./events/', (err, files) => {
